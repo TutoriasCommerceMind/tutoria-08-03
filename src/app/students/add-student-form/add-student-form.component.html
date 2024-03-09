@@ -1,0 +1,55 @@
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()" class="m-5">
+  <input
+    type="text"
+    class="form-control w-25 is-invalid"
+    placeholder="Ingrese su nombre completo"
+    formControlName="fullName"
+    [ngClass]="{
+      'is-invalid':
+        studentForm.get('fullName')?.invalid &&
+        studentForm.get('fullName')?.touched
+    }"
+  />
+  <div
+    class="alert alert-danger w-25 mt-2"
+    *ngIf="
+      studentForm.get('fullName')?.invalid &&
+      studentForm.get('fullName')?.touched
+    "
+  >
+    Este campo es obligatorio y debe tener entre 3 y 30 caracteres.
+  </div>
+  <input
+    type="text"
+    class="form-control w-25 is-invalid"
+    placeholder="example@mail.com"
+    formControlName="mail"
+    [ngClass]="{
+      'is-invalid':
+        studentForm.get('mail')?.invalid && studentForm.get('mail')?.touched
+    }"
+  />
+  <div
+    class="alert alert-danger w-25 mt-2"
+    *ngIf="studentForm.get('mail')?.invalid && studentForm.get('mail')?.touched"
+  >
+    Este campo es obligatorio y debe ser un mail valido
+  </div>
+  <input
+    type="text"
+    class="form-control w-25 is-invalid"
+    placeholder="Ingrese su imagen"
+    formControlName="img"
+    [ngClass]="{
+      'is-invalid':
+        studentForm.get('img')?.invalid && studentForm.get('img')?.touched
+    }"
+  />
+  <div
+    class="alert alert-danger w-25 mt-2"
+    *ngIf="studentForm.get('img')?.invalid && studentForm.get('img')?.touched"
+  >
+    Este campo es obligatorio y debe tener entre 10 y 300 caracteres.
+  </div>
+  <button class="btn btn-primary mt-3" type="submit">Enviar</button>
+</form>
